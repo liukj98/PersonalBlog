@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人博客</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/about.css">
+</head>
+<body>
+    <!-- 头部区 -->
+    <header>
+        <div class="content">
+            <div class="nav">
+                <ul>
+                    <li class="personal"><a href="/">我的个人博客 | 技术博客</a></li>
+                    <li class="common"><a href="/">首页</a></li>
+                    <li class="common"><a href="/sitemap.html">地图</a></li>
+                    <li class="common"><a href="/about.html">关于</a></li>
+                    <li class="common"><a href="/guestbook.html">留言</a></li>
+                </ul>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="输入关键词查找">
+                <button>搜索</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 中间区 -->
+    <div class="middle-content">
+        <div class="left">
+            <div class="about">
+                <div class="about_me">
+                    <p>关于我</p>
+                    <div class="desc">
+                        <span class="my_desc">博主<a>刘可君</a>，性别男，卷葱省。</span>
+                        <div class="detail_desc">
+                            会修电脑的野生程序员<br />
+                            认为PHP是世界上最好的语言<br />
+                            花括号不换行<br />
+                            7年PHP开发
+                        </div>
+                    </div>
+                </div>
+                <div class="about_me about_blog">
+                    <p>关于博客</p>
+                    <div class="desc">
+                        <span class="my_desc">
+                            从2009年 – 今<br />
+                            博主很懒+词穷，佛系更新…<br />
+                            域名 zhengoo.cn -> zh30.com<br />
+                            程序 tcms -> WordPress<br />
+                            服务器 免费空间 -> 国内某收费空间 -> 国外vps -> 阿里云</span>
+                        <div class="detail_desc">
+                            推荐便宜又稳定的xen-VPS吧: HostShare<br />
+                            kvm vps:hostEONS 洛杉矶节点，我在用，速度可以，可以干一些羞羞的事。
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="leave_msg" id="show_comments">
+                <div class="total_leave_msgs">当前博客：共有{{count}}条留言</div>
+                <div class="comment" v-for="comment in comments">
+                    <div class="commentor"><b>{{comment.userName}}</b>：<b>{{ comment.options == "0" ? "" : ("@" + comment.options) }}</b> 发表于 {{comment.cTime}} 
+                        <a @click="reply(comment.id, comment.userName)">[回复]</a>
+                    </div>
+                    <div>{{comment.content}}</div>
+                </div>
+            </div>
+            <div id="send_comment">
+                <span>发表评论</span>
+                <div>
+                    <input class="parent" type="hidden" value="-1">
+                    <input class="parent_name" type="hidden" value="0">
+                </div>
+                <div>
+                    <input class="user_name" type="text" placeholder="昵称">
+                    <input class="user_email" type="text" placeholder="邮箱（评论被恢复时你能收到通知）">
+                </div>
+                <div>
+                    <textarea class="comment_content" placeholder="无意义内容我可能不会回复你" cols="30" rows="10"></textarea>
+                </div>
+                <div>
+                    <input class="verification" type="text" placeholder="验证码">
+                    <span v-html="vcode" @click="changeCode()"></span>
+                </div>
+                <button @click="sendComment()">提交评论</button>
+            </div>
+        </div>
+        <div class="right">
+            <div class="right_module" id="random-tags">
+                <div class="head tag">随机标签云</div>
+                <div class="tags">
+                    <a href="/"
+                        v-for="tag in tags"
+                        :style="{color: randomColor(), fontSize: randomFont()}"
+                    >{{tag}}</a>
+                </div>
+            </div>
+            <div class="right_module" id="new_hot">
+                <div class="head hot">最近热门</div>
+                <ul>
+                    <li v-for="title in hotTitles">
+                        <a :href="title.link">{{title.title}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="right_module" id="new_comment">
+                <div class="head comment">最新评论</div>
+                <ul>
+                    <li v-for="comment in comments">
+                        <div class="user_info">
+                            <span class="user">{{comment.userName}}</span>
+                            <span class="time">{{comment.date}}</span>
+                        </div>
+                        <a href="/">{{comment.content}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="right_module">
+                <div class="head tag">友情链接</div>
+                <div class="tags">
+                    <ul>
+                        <li>
+                            <a class="name_link" href="/">佛布朗斯基</a>
+                            <a class="name_link" href="/">kTWO博客</a>
+                        </li>
+                        <li>
+                            <a class="name_link" href="/">佛布朗斯基</a>
+                            <a class="name_link" href="/">kTWO博客</a>
+                        </li>
+                        <li>
+                            <a class="name_link" href="/">佛布朗斯基</a>
+                            <a class="name_link" href="/">kTWO博客</a>
+                        </li>
+                        <li>
+                            <a class="name_link" href="/">佛布朗斯基</a>
+                            <a class="name_link" href="/">kTWO博客</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部区 -->
+    <footer>
+        <ul>
+            <li><a href="/">C/C++</a></li>
+            <li><a href="/">JAVA</a></li>
+            <li><a href="/">PYTHON</a></li>
+            <li><a href="/">C#</a></li>
+            <li><a href="/">PHP</a></li>
+            <li><a href="/">视频分享</a></li>
+            <li><a href="/">编程基础</a></li>
+            <li><a href="/">新闻搞笑</a></li>
+        </ul>
+        <div class="desc">
+            Copyright © 2010-2020 刘可君个人博客 All rights reserved. 由免费开源的WordPress强力驱动. 鲁ICP备14017955号站长统计
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./js/axios.js"></script>
+    <script src="./js/changeTime.js"></script>
+    <script src="./js/base.js"></script>
+    <script src="./js/about.js"></script>
+
+</body>
+</html>

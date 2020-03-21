@@ -1,0 +1,73 @@
+#blog_detail{
+    background: white;
+    box-shadow: 3px 4px 3px #191818;
+    padding: 20px 10px;
+    border-radius: 5px;
+}
+#blog_detail .title{
+    font-size: 24px;
+    font-weight: bold;
+    padding-bottom: 15px;
+}
+#blog_detail .blog_msg{
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgb(153, 135, 135);
+    margin-bottom: 10px;
+}
+
+#send_comment{
+    background: white;
+    box-shadow: 3px 4px 3px #191818;
+    padding: 20px 10px;
+    border-radius: 5px; 
+    margin-top: 50px;
+}
+
+#send_comment input{
+    margin-top: 20px;
+    padding: 8px 5px;
+    width: 300px;
+    font-size: 14px;
+    border: 1px solid rgb(155, 139, 139);
+    border-radius: 3px;
+}
+
+#send_comment textarea{
+    margin-top: 20px;
+    padding: 5px;
+    width: 90%;
+    font-size: 14px;
+}
+
+#send_comment button{
+    margin-top: 20px;
+    padding: 7px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+}
+#send_comment button:hover{
+    background: rgb(94, 88, 88);
+}
+
+
+.leave_msg{
+    width: 100%;
+}
+.leave_msg .total_leave_msgs{
+    padding: 20px 10px;
+}
+.leave_msg .comment{
+    border-radius: 5px;
+    color: rgb(88, 88, 194);
+    border: 1px dashed rgb(189, 156, 156);
+    padding: 10px 10px;
+    margin-bottom: 20px;
+}
+.leave_msg .comment .commentor{
+    padding-bottom: 10px;
+}
+.leave_msg .comment .commentor a{
+    color: rgb(88, 88, 194);
+    cursor: pointer;
+}

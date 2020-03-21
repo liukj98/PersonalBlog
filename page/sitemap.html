@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人博客</title>
+    <link rel="stylesheet" href="./css/sitemap.css">
+</head>
+<body>
+    <div class="blog_name">刘可君个人博客's SiteMap</div>
+    <div class="show_list">
+        <a class="deep" href="/">刘可君个人博客</a>>><a href="/">站点地图</a>
+    </div>
+    <div class="blog_list" id="blog_list">
+        <p>最新文章</p>
+        <ul>
+            <li v-for="blog in blogList">
+                <a :href="blog.link">{{blog.title}}</a>
+            </li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./js/axios.js"></script>
+    <script src="./js/sitemap.js"></script>
+</body>
+</html>

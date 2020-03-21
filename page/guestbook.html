@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人博客</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/guestbook.css">
+</head>
+<body>
+    
+    <!-- 头部区 -->
+    <header>
+        <div class="content">
+            <div class="nav">
+                <ul>
+                    <li class="personal"><a href="/">我的个人博客 | 技术博客</a></li>
+                    <li class="common"><a href="/">首页</a></li>
+                    <li class="common"><a href="/sitemap.html">地图</a></li>
+                    <li class="common"><a href="/about.html">关于</a></li>
+                    <li class="common"><a href="/guestbook.html">留言</a></li>
+                </ul>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="输入关键词查找">
+                <button>搜索</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 中间区 -->
+    <div class="middle-content">
+        <div class="left">
+            <div class="guestbook">
+                <p>欢迎灌水交流，别看我长时间不发博，博主可一直都在线~</p>
+                <p class="common">友链只交换技术类个人博客，本博客稳定在线，所以也需要你的站尽量稳定</p>
+                <p class="common">不要皮，谢谢。</p>
+                <p class="common">博主联系:MzcxNjA0Nzg1</p>
+            </div>
+            <div class="leave_msg" id="show_comments">
+                <div class="total_leave_msgs">当前博客：共有{{count}}条留言</div>
+                <div class="comment" v-for="comment in comments">
+                    <div class="commentor"><b>{{comment.userName}}</b>：<b>{{ comment.options == "0" ? "" : ("@" + comment.options) }}</b> 发表于 {{comment.cTime}} 
+                        <a @click="reply(comment.id, comment.userName)">[回复]</a>
+                    </div>
+                    <div>{{comment.content}}</div>
+                </div>
+            </div>
+            <div id="send_comment">
+                <span>发表评论</span>
+                <div>
+                    <input class="parent" type="hidden" value="-1">
+                    <input class="parent_name" type="hidden" value="0">
+                </div>
+                <div>
+                    <input class="user_name" type="text" placeholder="昵称">
+                    <input class="user_email" type="text" placeholder="邮箱（评论被恢复时你能收到通知）">
+                </div>
+                <div>
+                    <textarea class="comment_content" placeholder="无意义内容我可能不会回复你" cols="30" rows="10"></textarea>
+                </div>
+                <div>
+                    <input class="verification" type="text" placeholder="验证码">
+                    <span v-html="vcode" @click="changeCode()"></span>
+                </div>
+                <button @click="sendComment()">提交评论</button>
+            </div>
+        </div>
+        <div class="right">
+            <div class="right_module" id="random-tags">
+                <div class="head tag">随机标签云</div>
+                <div class="tags">
+                    <a href="/"
+                        v-for="tag in tags"
+                        :style="{color: randomColor(), fontSize: randomFont()}"
+                    >{{tag}}</a>
+                </div>
+            </div>
+            <div class="right_module" id="new_hot">
+                <div class="head hot">最近热门</div>
+                <ul>
+                    <li v-for="title in hotTitles">
+                        <a :href="title.link">{{title.title}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="right_module" id="new_comment">
+                <div class="head comment">最新评论</div>
+                <ul>
+                    <li v-for="comment in comments">
+                        <div class="user_info">
+                            <span class="user">{{comment.userName}}</span>
+                            <span class="time">{{comment.date}}</span>
+                        </div>
+                        <a href="/">{{comment.content}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="right_module">
+                <div class="head tag">友情链接</div>
+                <div class="tags">
+                    <ul>
+                        <li>
+                            <a class="name_link" href="/">佛布朗斯基</a>
+                            <a class="name_link" href="/">kTWO博客</a>
+                        </li>
+                        <li>
+                            <a class="name_link" href="/">佛布朗斯基</a>
+                            <a class="name_link" href="/">kTWO博客</a>
+                        </li>
+                        <li>
+                            <a class="name_link" href="/">佛布朗斯基</a>
+                            <a class="name_link" href="/">kTWO博客</a>
+                        </li>
+                        <li>
+                            <a class="name_link" href="/">佛布朗斯基</a>
+                            <a class="name_link" href="/">kTWO博客</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部区 -->
+    <footer>
+        <ul>
+            <li><a href="/">C/C++</a></li>
+            <li><a href="/">JAVA</a></li>
+            <li><a href="/">PYTHON</a></li>
+            <li><a href="/">C#</a></li>
+            <li><a href="/">PHP</a></li>
+            <li><a href="/">视频分享</a></li>
+            <li><a href="/">编程基础</a></li>
+            <li><a href="/">新闻搞笑</a></li>
+        </ul>
+        <div class="desc">
+            Copyright © 2010-2020 刘可君个人博客 All rights reserved. 由免费开源的WordPress强力驱动. 鲁ICP备14017955号站长统计
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./js/axios.js"></script>
+    <script src="./js/changeTime.js"></script>
+    <script src="./js/base.js"></script>
+    <script src="./js/guestbook.js"></script>
+
+</body>
+</html>

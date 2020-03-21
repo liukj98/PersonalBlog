@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+body{
+    width: 100%;
+}
+.blog_name{
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+.show_list{
+    width: 95%;
+    border: 1px solid rgb(207, 189, 189);
+    padding: 10px 10px;
+    margin: 0 auto 20px auto;
+    font-size: 12px;
+}
+.show_list a.deep{
+    font-weight: bold;
+}
+.show_list a{
+    color: black;
+}
+.blog_list{
+    width: 95%;
+    padding: 10px 10px;
+    margin: 0 auto;
+    border: 1px solid rgb(207, 189, 189);
+}
+.blog_list p{
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.blog_list li{
+    padding: 5px 30px;
+    font-size: 14px;
+}
+.blog_list li a{
+    color: black;
+}
+.blog_list li a:hover{
+    color: rgb(9, 9, 139);
+}

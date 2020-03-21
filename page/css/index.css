@@ -1,0 +1,58 @@
+/* 左边内容部分 */
+.left .every-day{
+    padding: 15px 20px;
+    box-shadow: 3px 4px 3px #888;
+    border-radius: 5px;
+    background: white;
+    font-size: 14px;
+}
+.left .every-day span{
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(3, 82, 3)
+}
+.left .every-day p{
+    padding-top: 10px;
+}
+.left .every-day p.title{
+    font-style: italic;
+}
+.left .every-day span::after{
+    font-family: My_Font;
+    content: "\e122";
+    font-size: 12px;
+    color: slateblue;
+    padding-left: 5px;
+}
+.left .artical{
+    background: white;
+    margin-top: 20px;
+    border-radius: 5px;
+    box-shadow: 3px 4px 3px #888;
+}
+.left .artical .title{
+    margin: 10px 20px;
+    font-weight: bold;
+    font-size: 18px;
+    padding-top: 20px
+}
+.left .artical .title a{
+    color: black;
+}
+.left .artical .title a:hover{
+    color: lightseagreen;
+}
+.left .artical .content{
+    margin: 10px 20px;
+    color: #333;
+}
+.left .artical .time{
+    background: #181818;
+    padding: 8px 20px;
+    color: white;
+}
+
+
+
+
+

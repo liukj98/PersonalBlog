@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人博客</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <!-- 头部区 -->
+    <header>
+        <div class="content">
+            <div class="nav">
+                <ul>
+                    <li class="personal"><a href="/">我的个人博客 | 技术博客</a></li>
+                    <li class="common"><a href="/">首页</a></li>
+                    <li class="common"><a href="/sitemap.html">地图</a></li>
+                    <li class="common"><a href="/about.html">关于</a></li>
+                    <li class="common"><a href="/guestbook.html">留言</a></li>
+                </ul>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="输入关键词查找">
+                <button>搜索</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 中间区 -->
+    <div class="middle-content">
+        <div class="left">
+            <!-- 每日一句 -->
+            <div class="every-day" id="every-day">
+                <span>每日一句</span>
+                <p v-html="getContent">Lorem ipsum, dolor sit amet consectetur.</p>
+                <p v-html="getAuthor" class="title">-----Smith Tom</p>
+            </div>
+            <!-- 文章列表 -->
+            <div class="artical-list" id="artical-list">
+                <div class="artical" 
+                    v-for="artical in articalList"
+                >
+                    <div class="title">
+                        <a :href="artical.link">{{artical.title}}</a>
+                    </div>
+                    <div class="content">
+                        {{artical.content}}
+                    </div>
+                    <div class="time">
+                        发布于{{artical.date}} |  浏览({{artical.views}}) | Tags：{{artical.tags}}
+                    </div>
+                </div>
+
+                <div class="page_tool">
+                    <ul>
+                        <li 
+                            v-for="pageNumber in pageNumberList"
+                            :class="{nowPage: pageNumber.nowPage==page && (pageNumber.text!='上一页') && (pageNumber.text!='下一页'), prevPage: pageNumber.text=='上一页', nextPage: pageNumber.text=='下一页'}"
+                            @click="jumpToPage(pageNumber.text, pageNumber.nowPage)"
+                        >{{pageNumber.text}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="right_module" id="random-tags">
+                <div class="head tag">随机标签云</div>
+                <div class="tags">
+                    <a  v-for="tag in tags"
+                        href="/"
+                        :style="{color: randomColor(), fontSize: randomFont()}"
+                    >{{tag}}</a>
+                </div>
+            </div>
+            <div class="right_module" id="new_hot">
+                <div class="head hot">最近热门</div>
+                <ul>
+                    <li v-for="title in hotTitles">
+                        <a :href="title.link">{{title.title}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="right_module" id="new_comment">
+                <div class="head comment">最新评论</div>
+                <ul>
+                    <li v-for="comment in comments">
+                        <div class="user_info">
+                            <span class="user">{{comment.userName}}</span>
+                            <span class="time">{{comment.date}}</span>
+                        </div>
+                        <a href="/">{{comment.content}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="right_module">
+                <div class="head tag">友情链接</div>
+                <div class="tags">
+                    <ul>
+                        <li>
+                            <a class="name_link" href="/">佛布朗斯基</a>
+                            <a class="name_link" href="/">kTWO博客</a>
+                        </li>
+                        <li>
+                            <a class="name_link" href="/">佛布朗斯基</a>
+                            <a class="name_link" href="/">kTWO博客</a>
+                        </li>
+                        <li>
+                            <a class="name_link" href="/">佛布朗斯基</a>
+                            <a class="name_link" href="/">kTWO博客</a>
+                        </li>
+                        <li>
+                            <a class="name_link" href="/">佛布朗斯基</a>
+                            <a class="name_link" href="/">kTWO博客</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部区 -->
+    <footer>
+        <ul>
+            <li><a href="/">C/C++</a></li>
+            <li><a href="/">JAVA</a></li>
+            <li><a href="/">PYTHON</a></li>
+            <li><a href="/">C#</a></li>
+            <li><a href="/">PHP</a></li>
+            <li><a href="/">视频分享</a></li>
+            <li><a href="/">编程基础</a></li>
+            <li><a href="/">新闻搞笑</a></li>
+        </ul>
+        <div class="desc">
+            Copyright © 2010-2020 刘可君个人博客 All rights reserved. 由免费开源的WordPress强力驱动. 鲁ICP备14017955号站长统计
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./js/axios.js"></script>
+    <script src="./js/changeTime.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="./js/base.js"></script>
+
+</body>
+</html>

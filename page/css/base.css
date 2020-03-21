@@ -1,0 +1,171 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+@font-face{
+    font-family: "My_Font";
+    src: url("../font/glyphicons-halflings-regular.woff2");
+}
+a{
+    color: #ccc;
+}
+body{
+    background-image: url("../images/bg.jpg");
+}
+
+/* 头部区 */
+header{
+    width: 100%;
+    height: 50px;
+    background: #181818;
+}
+header .content{
+    width: 70%;
+    height: 50px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+header .content .nav .personal{
+    font-size: 18px;
+}
+header .content .nav li{
+    float: left;
+    height: 50px;
+    line-height: 50px;
+}
+header .content .nav li.common{
+    width: 75px;
+    text-align: center;
+    font-size: 14px;
+}
+header .content .search-bar{
+    height: 50px;
+    line-height: 50px;
+    margin-top: -2px;
+}
+header .content .search-bar input{
+    outline: none;
+    padding: 8px 5px 8px 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+header .content .search-bar button{
+    padding: 6px 13px 9px 13px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+/* 中间区 */
+.middle-content{
+    width: 70%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+}
+.middle-content .left{
+    width: 66%;
+    /* border: 1px solid red; */
+}
+.middle-content .right{
+    width: 30%;
+}
+
+/* 分页插件部分 */
+.page_tool ul{
+    margin-top: 30px;
+}
+.page_tool ul li{
+    display: inline-block;
+    text-align: center;
+    background: white;
+    border: 1px solid rgb(235, 197, 197);
+    cursor: pointer;
+    color: rgb(67, 7, 124);
+    padding: 8px 13px;
+    margin-right: 5px;
+    box-sizing: border-box;
+}
+.page_tool ul li:hover{
+    border: 1px solid rgb(93, 74, 202);
+}
+.page_tool ul li.nowPage{
+    border: none;
+    color: black;
+}
+/* 右边内容部分 */
+.right .right_module{
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+.right .right_module .head{
+    background: #191818;
+    height: 30px;
+    line-height: 30px;
+    padding: 10px 10px;
+    color: rgb(24, 118, 212);
+    font-size: 14px;
+}
+.right .right_module .tags{
+    padding: 20px 10px;
+    background: #1f1f1f;
+}
+.right .right_module .tags a{
+    color: rgb(9, 141, 16);
+    display: inline-block;
+    padding: 0px 2px;    
+}
+.right .right_module ul{
+    background: #1f1f1f;
+}
+.right .right_module li{
+    padding: 10px 10px;
+    border-bottom: 1px solid rgb(80, 70, 70);
+    font-size: 14px;
+}
+.right .right_module .user_info{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: white;
+}
+.right .right_module li{
+    color: rgb(46, 38, 38);
+    border-bottom: 1px solid rgb(80, 70, 70);
+}
+.right .right_module li a.name_link{
+    display: inline-block;
+    width: 45%;
+}
+.right .right_module li a:hover{
+    color: rgb(74, 219, 38);
+}
+
+/* 底部区 */
+footer{
+    background: #191818;
+    color: rgb(29, 21, 21);
+    font-size: 14px;
+    width: 100%;
+}
+footer ul{
+    padding: 20px 40px;
+    text-align: center;
+    margin: 0 auto;
+}
+footer ul li{
+    padding: 0 10px;
+    display: inline-block;
+}
+footer ul li a:hover{
+    color: rgb(50, 50, 223);
+}
+footer .desc{
+    padding-bottom: 30px;
+    color: #ccc;
+    margin: 0 auto;
+    text-align: center;
+}
